@@ -57,3 +57,24 @@ function handleError(error) {
 }
 
 fetchProductAsync();
+
+// Task 4:
+function displayProducts(products) {
+    const container = document.getElementById('product-container');
+
+    container.innerHTML = '';
+
+    products.slice(0,5).forEach(product => {
+        const {name, price, image} = product.fields;
+
+        const productDiv = document.createElement('div');
+        productDiv.className = 'product';
+
+        productDiv.innerHTML = `
+            <img src='${image[0].url}' alt = '${name}' />
+            <h3>${name}</h3>
+            <p>Price: $${price}</p>
+        `;
+        container.appendChild(productDiv);
+    });
+}
